@@ -1,3 +1,7 @@
+enum class Marker {
+    X, O
+}
+
 fun main(args: Array<String>) {
     println("Hello World!")
 
