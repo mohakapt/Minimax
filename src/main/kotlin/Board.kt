@@ -18,3 +18,6 @@ val Board.diagonals: List<List<Marker?>>
         (0..<cellCount step boardSize + 1).map { state[it] },
         (boardSize - 1..<cellCount - boardSize + 1 step boardSize - 1).map { state[it] }
     )
+
+val Board.isBoardFull: Boolean
+    get() = state.all { it != null }
