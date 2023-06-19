@@ -21,3 +21,18 @@ val Board.diagonals: List<List<Marker?>>
 
 val Board.isBoardFull: Boolean
     get() = state.all { it != null }
+
+val Board.evaluation: Int?
+    get() {
+        val combinations = rows + columns + diagonals
+
+        val xWon = combinations.any { combination -> combination.all { it == Marker.X } }
+        if (xWon) return 1
+
+        val oWon = combinations.any { combination -> combination.all { it == Marker.O } }
+        if (oWon) return -1
+
+        if (isBoardFull) return 0
+
+        return null
+    }
