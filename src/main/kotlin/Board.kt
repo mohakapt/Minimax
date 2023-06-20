@@ -72,6 +72,13 @@ val Board.evaluation: Int?
     }
 
 fun Board.makeMove(move: Int): Board {
+    if (evaluation != null)
+        throw IllegalStateException("Game is already over")
+    if (move !in 0..<cellCount)
+        throw IllegalArgumentException("Index out of bounds")
+    if (state[move] != null)
+        throw IllegalArgumentException("Cell is already occupied")
+
     val newState = state.toMutableList().also { it[move] = turn }
     val newTurn = if (turn == Marker.X) Marker.X else Marker.O
 
