@@ -70,3 +70,10 @@ val Board.evaluation: Int?
 
         return null
     }
+
+fun Board.makeMove(move: Int): Board {
+    val newState = state.toMutableList().also { it[move] = turn }
+    val newTurn = if (turn == Marker.X) Marker.X else Marker.O
+
+    return Board(boardSize, newState, newTurn, move)
+}
