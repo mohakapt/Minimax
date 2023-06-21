@@ -80,7 +80,7 @@ fun Board.makeMove(move: Int): Board {
         throw IllegalArgumentException("Cell is already occupied")
 
     val newState = state.toMutableList().also { it[move] = turn }
-    val newTurn = if (turn == Marker.X) Marker.X else Marker.O
+    val newTurn = if (turn == Marker.X) Marker.O else Marker.X
 
     return Board(boardSize, newState, newTurn, move)
 }
