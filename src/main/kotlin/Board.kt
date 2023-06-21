@@ -71,6 +71,18 @@ val Board.evaluation: Int?
         return null
     }
 
+/**
+ * Makes a move on the board.
+ *
+ * @param move The index of the cell to make the move in.
+ *             Where the cells are numbered from left to right and top to bottom.
+ *             Starting at `0` and ending at `boardSize * boardSize - 1`.
+ * @return A new board with the move made and the turn switched.
+ * @throws IllegalStateException If the game is already over.
+ * @throws IllegalArgumentException If the index is out of bounds or the cell is already occupied.
+ * @see Board.evaluation
+ * @see Board.boardSize
+ */
 fun Board.makeMove(move: Int): Board {
     if (evaluation != null)
         throw IllegalStateException("Game is already over")
