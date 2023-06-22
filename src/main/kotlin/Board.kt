@@ -71,6 +71,23 @@ val Board.evaluation: Int?
         return null
     }
 
+/**
+ * Computes the available moves on the board.
+ *
+ * A move is considered available if the cell is empty.
+ * The cells are numbered from left to right and top to bottom,
+ * Starting at `0` and ending at `boardSize * boardSize - 1`.
+ *
+ * For example, for a 3x3 board, the cells are numbered as follows:
+ * ```
+ * 0 1 2
+ * 3 4 5
+ * 6 7 8
+ * ```
+ *
+ * @return A list of indices of the available cells.
+ * @see Board.makeMove
+ */
 val Board.availableMoves: List<Int>
     get() = state.mapIndexedNotNull { index, marker -> if (marker == null) index else null }
 
