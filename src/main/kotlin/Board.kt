@@ -71,6 +71,9 @@ val Board.evaluation: Int?
         return null
     }
 
+val Board.availableMoves: List<Int>
+    get() = state.mapIndexedNotNull { index, marker -> if (marker == null) index else null }
+
 /**
  * Makes a move on the board.
  *
