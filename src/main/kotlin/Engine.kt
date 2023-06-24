@@ -1,5 +1,13 @@
 var awesomeMove = -1
 
+/**
+ * Calculates the final evaluation of the given board.
+ * Also, Records the best move in the global variable `awesomeMove`
+ *
+ * @param board The board to evaluate.
+ * @return `1` if the game is a win for `X`, `-1` if the game is a win for `O`, `0` if the game is a tie.
+ * @see awesomeMove
+ */
 fun minimax(board: Board): Int {
     val boardEvaluation = board.evaluation
     if (boardEvaluation != null) {
