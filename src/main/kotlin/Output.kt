@@ -45,7 +45,7 @@ private fun Board.outputBoard(highlightLastMove: Boolean = true): String {
  *
  * @param highlightLastMove Whether to highlight the last move with a different color.
  */
-fun Board.printBoard(highlightLastMove: Boolean) {
+fun Board.printBoard(highlightLastMove: Boolean = true) {
     println()
     println(outputBoard(highlightLastMove))
     println()
