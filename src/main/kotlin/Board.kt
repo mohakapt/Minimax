@@ -18,12 +18,27 @@ data class Board(
     val cellCount = boardSize * boardSize
 }
 
+/**
+ * Creates an empty board of 3 x 3 cells.
+ *
+ * @return A new empty board with the size of 9.
+ */
 val Board.Companion.empty3x3: Board
     get() = Board(3, List(9) { null }, Marker.X, null)
 
+/**
+ * Creates an empty board of 4 x 4 cells.
+ *
+ * @return A new empty board with the size of 16.
+ */
 val Board.Companion.empty4x4: Board
     get() = Board(4, List(16) { null }, Marker.X, null)
 
+/**
+ * Creates an empty board of 5 x 5 cells.
+ *
+ * @return A new empty board with the size of 25.
+ */
 val Board.Companion.empty5x5: Board
     get() = Board(5, List(25) { null }, Marker.X, null)
 
