@@ -13,8 +13,19 @@ data class Board(
     val turn: Marker,
     val lastMove: Int?,
 ) {
+    companion object
+
     val cellCount = boardSize * boardSize
 }
+
+val Board.Companion.empty3x3: Board
+    get() = Board(3, List(9) { null }, Marker.X, null)
+
+val Board.Companion.empty4x4: Board
+    get() = Board(4, List(16) { null }, Marker.X, null)
+
+val Board.Companion.empty5x5: Board
+    get() = Board(5, List(25) { null }, Marker.X, null)
 
 /**
  * Computes the rows of the board.
