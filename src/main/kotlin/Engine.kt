@@ -18,6 +18,7 @@ fun minimax(board: Board): Int {
     var bestEvaluation = if (maximizing) -1 else 1
     var bestMove = -1
 
+    // The moves are shuffled to make the engine more interesting by avoiding always picking the same move.
     val moves = board.availableMoves.shuffled()
 
     for (move in moves) {
