@@ -1,3 +1,5 @@
+package engine
+
 var awesomeMove = -1
 
 /**
