@@ -1,5 +1,8 @@
 package charmander
 
+/**
+ * Stores the best move found by the engine, gets updated after calling [minimax].
+ */
 internal var awesomeMove = -1
 
 /**
