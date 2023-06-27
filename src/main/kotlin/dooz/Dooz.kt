@@ -11,7 +11,7 @@ import charmander.Marker
 /**
  * Dooz is a Tic-Tac-Toe playing AI, created by Yamin Siahmargooei.
  */
-internal object Dooz {
+object Dooz {
     /**
      * Converts our board to a format that the Dooz AI can understand, then asks the AI to suggest a move.
      *

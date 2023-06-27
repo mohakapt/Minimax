@@ -20,6 +20,6 @@
 
 package dooz.model
 
-internal enum class AiDifficulty {
+enum class AiDifficulty {
     Easy, Medium, Hard
 }
