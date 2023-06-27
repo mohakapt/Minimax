@@ -1,5 +1,7 @@
 package charmander
 
+internal var awesomeMove = -1
+
 /**
  * This is the first version of our engine, it's quite slow, but it should be unbeatable.
  * I call it Charmander because it's the first evolution of the best engine I can think of.

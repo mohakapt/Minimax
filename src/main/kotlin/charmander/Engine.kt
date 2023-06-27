@@ -1,7 +1,5 @@
 package charmander
 
-var awesomeMove = -1
-
 /**
  * Calculates the final evaluation of the given board.
  * Also, Records the best move in the global variable `awesomeMove`
