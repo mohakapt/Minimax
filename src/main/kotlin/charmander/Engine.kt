@@ -1,4 +1,4 @@
-package engine
+package charmander
 
 var awesomeMove = -1
 

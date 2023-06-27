@@ -1,12 +1,12 @@
 package dooz
 
-import engine.Board
+import charmander.Board
 import dooz.ai.SimpleGameAi
 import dooz.model.AiDifficulty
 import dooz.model.DoozCell
 import dooz.model.Player
 import dooz.model.PlayerType
-import engine.Marker
+import charmander.Marker
 
 /**
  * Dooz is a Tic-Tac-Toe playing AI, created by Yamin Siahmargooei.
