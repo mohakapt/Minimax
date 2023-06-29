@@ -1,7 +1,15 @@
 import charmander.*
 import dooz.Dooz
 
+/**
+ * This is a match between Charmander and Dooz playing Tic-Tac-Toe against each other.
+ */
 object CharmanderVsDooz {
+    /**
+     * Plays a match between Charmander and Dooz.
+     *
+     * @param gameCount The number of games to play.
+     */
     fun playMatch(gameCount: Int) {
         var charmander = 0
         var dooz = 0
