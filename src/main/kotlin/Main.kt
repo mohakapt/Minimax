@@ -2,6 +2,10 @@ import charmander.*
 import kotlin.system.measureNanoTime
 
 fun main(args: Array<String>) {
+    CharmanderVsDooz.playMatch(30)
+}
+
+private fun testEngine() {
     var board = Board.empty3x3
     var evaluation: Int
 
