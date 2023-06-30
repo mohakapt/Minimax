@@ -4,7 +4,8 @@ package charmander
  * Represents a board of a Tic-Tac-Toe game.
  *
  * @property boardSize The size of the board, i.e. the number of rows and columns.
- * @property state The state of the board represented as a list of markers, where `null` represents an empty cell.
+ * @property stateX The state of the board for player `X` as a bitboard, where each bit represents a cell.
+ * @property stateO The state of the board for player `O` as a bitboard, where each bit represents a cell.
  * @property turn The marker of the player whose turn it is.
  * @property lastMove The index of the last move made on the board.
  * @property cellCount The number of cells on the board.
