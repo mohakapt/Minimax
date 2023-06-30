@@ -76,7 +76,10 @@ val Board.diagonals: List<List<Marker?>>
  * @return `true` if the board is full, `false` otherwise.
  */
 val Board.isBoardFull: Boolean
-    get() = TODO("I will have a look at this later")
+    get() {
+        val board = stateX or stateO
+        return board.countOneBits() == cellCount
+    }
 
 /**
  * Computes the current evaluation of the board.
