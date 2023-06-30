@@ -11,7 +11,8 @@ package charmander
  */
 data class Board(
     val boardSize: Int,
-    val state: List<Marker?>,
+    val stateX: Long,
+    val stateO: Long,
     val turn: Marker,
     val lastMove: Int?,
 ) {
@@ -26,7 +27,7 @@ data class Board(
  * @return A new empty board with the size of 9.
  */
 val Board.Companion.empty3x3: Board
-    get() = Board(3, List(9) { null }, Marker.X, null)
+    get() = Board(3,0b0, 0b0, Marker.X, null)
 
 /**
  * Creates an empty board of 4 x 4 cells.
@@ -34,7 +35,7 @@ val Board.Companion.empty3x3: Board
  * @return A new empty board with the size of 16.
  */
 val Board.Companion.empty4x4: Board
-    get() = Board(4, List(16) { null }, Marker.X, null)
+    get() = Board(4,0b0, 0b0, Marker.X, null)
 
 /**
  * Creates an empty board of 5 x 5 cells.
@@ -42,7 +43,7 @@ val Board.Companion.empty4x4: Board
  * @return A new empty board with the size of 25.
  */
 val Board.Companion.empty5x5: Board
-    get() = Board(5, List(25) { null }, Marker.X, null)
+    get() = Board(5,0b0, 0b0, Marker.X, null)
 
 /**
  * Computes the rows of the board.
@@ -50,7 +51,7 @@ val Board.Companion.empty5x5: Board
  * @return A list of lists of markers, where each outer list represents a row.
  */
 val Board.rows: List<List<Marker?>>
-    get() = state.chunked(boardSize)
+    get() = TODO("I will have a look at this later")
 
 /**
  * Computes the columns of the board.
@@ -58,7 +59,7 @@ val Board.rows: List<List<Marker?>>
  * @return A list of lists of markers, where each outer list represents a column.
  */
 val Board.columns: List<List<Marker?>>
-    get() = (0..<boardSize).map { x -> state.filterIndexed { index, _ -> index % boardSize == x } }
+    get() = TODO("I will have a look at this later")
 
 /**
  * Computes the diagonals of the board.
@@ -66,10 +67,7 @@ val Board.columns: List<List<Marker?>>
  * @return A list of lists of markers, where each outer list represents a diagonal.
  */
 val Board.diagonals: List<List<Marker?>>
-    get() = listOf(
-        (0..<cellCount step boardSize + 1).map { state[it] },
-        (boardSize - 1..<cellCount - boardSize + 1 step boardSize - 1).map { state[it] }
-    )
+    get() = TODO("I will have a look at this later")
 
 /**
  * Checks if the board is full.
@@ -77,7 +75,7 @@ val Board.diagonals: List<List<Marker?>>
  * @return `true` if the board is full, `false` otherwise.
  */
 val Board.isBoardFull: Boolean
-    get() = state.all { it != null }
+    get() = TODO("I will have a look at this later")
 
 /**
  * Computes the current evaluation of the board.
@@ -117,7 +115,7 @@ val Board.evaluation: Int?
  * @see Board.makeMove
  */
 val Board.availableMoves: List<Int>
-    get() = state.mapIndexedNotNull { index, marker -> if (marker == null) index else null }
+    get() = TODO("I will have a look at this later")
 
 /**
  * Makes a move on the board.
@@ -132,15 +130,5 @@ val Board.availableMoves: List<Int>
  * @see Board.boardSize
  */
 fun Board.makeMove(move: Int): Board {
-    if (evaluation != null)
-        throw IllegalStateException("Game is already over")
-    if (move !in 0..<cellCount)
-        throw IllegalArgumentException("Index out of bounds")
-    if (state[move] != null)
-        throw IllegalArgumentException("Cell is already occupied")
-
-    val newState = state.toMutableList().also { it[move] = turn }
-    val newTurn = if (turn == Marker.X) Marker.O else Marker.X
-
-    return Board(boardSize, newState, newTurn, move)
+    TODO("I will have a look at this later")
 }
