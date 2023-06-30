@@ -70,6 +70,12 @@ val Board.columns: List<List<Marker?>>
 val Board.diagonals: List<List<Marker?>>
     get() = TODO("I will have a look at this later")
 
+private val winningCombinations = listOf(
+    0b111000000L, 0b000111000L, 0b000000111L, // rows
+    0b100100100L, 0b010010010L, 0b001001001L, // columns
+    0b100010001L, 0b001010100L // diagonals
+)
+
 /**
  * Checks if the board is full.
  *
