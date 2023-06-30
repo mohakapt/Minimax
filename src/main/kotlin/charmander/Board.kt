@@ -74,6 +74,7 @@ val Board.diagonals: List<List<Marker?>>
  * Checks if the board is full.
  *
  * @return `true` if the board is full, `false` otherwise.
+ * @see Board.cellCount
  */
 val Board.isBoardFull: Boolean
     get() {
