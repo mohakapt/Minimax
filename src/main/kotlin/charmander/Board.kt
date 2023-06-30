@@ -95,13 +95,10 @@ val Board.isBoardFull: Boolean
  */
 val Board.evaluation: Int?
     get() {
-        val combinations = rows + columns + diagonals
-
-        val xWon = combinations.any { combination -> combination.all { it == Marker.X } }
-        if (xWon) return 1
-
-        val oWon = combinations.any { combination -> combination.all { it == Marker.O } }
-        if (oWon) return -1
+        for (combination in winningCombinations) {
+            if (stateX and combination == combination) return 1
+            if (stateO and combination == combination) return -1
+        }
 
         if (isBoardFull) return 0
 
