@@ -20,6 +20,12 @@ data class Board(
     companion object
 
     val cellCount = boardSize * boardSize
+
+    /**
+     * Returns the state of the board as a bitboard.
+     *
+     * @return The state of the board as a bitboard.
+     */
     val state: Long
         get() = stateX or stateO
 }
