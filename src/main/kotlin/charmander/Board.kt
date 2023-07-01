@@ -20,6 +20,8 @@ data class Board(
     companion object
 
     val cellCount = boardSize * boardSize
+    val state: Long
+        get() = stateX or stateO
 }
 
 /**
