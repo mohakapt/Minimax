@@ -103,7 +103,18 @@ val Board.evaluation: Int?
  * @see Board.makeMove
  */
 val Board.availableMoves: List<Int>
-    get() = TODO("I will have a look at this later")
+    get() {
+        val board = stateX or stateO
+        val moves = mutableListOf<Int>()
+
+        repeat(cellCount) {
+            if (board and (1L shl it) == 0L) {
+                moves.add(it)
+            }
+        }
+        
+        return moves
+    }
 
 /**
  * Makes a move on the board.
