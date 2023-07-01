@@ -46,30 +46,6 @@ val Board.Companion.empty4x4: Board
 val Board.Companion.empty5x5: Board
     get() = Board(5,0b0, 0b0, Marker.X, null)
 
-/**
- * Computes the rows of the board.
- *
- * @return A list of lists of markers, where each outer list represents a row.
- */
-val Board.rows: List<List<Marker?>>
-    get() = TODO("I will have a look at this later")
-
-/**
- * Computes the columns of the board.
- *
- * @return A list of lists of markers, where each outer list represents a column.
- */
-val Board.columns: List<List<Marker?>>
-    get() = TODO("I will have a look at this later")
-
-/**
- * Computes the diagonals of the board.
- *
- * @return A list of lists of markers, where each outer list represents a diagonal.
- */
-val Board.diagonals: List<List<Marker?>>
-    get() = TODO("I will have a look at this later")
-
 private val winningCombinations = listOf(
     0b111000000L, 0b000111000L, 0b000000111L, // rows
     0b100100100L, 0b010010010L, 0b001001001L, // columns
