@@ -46,6 +46,10 @@ val Board.Companion.empty4x4: Board
 val Board.Companion.empty5x5: Board
     get() = Board(5,0b0, 0b0, Marker.X, null)
 
+/**
+ * Stores the winning combinations for a 3x3 board as bitboards.
+ * This is a temporary solution until I find a better way to do this.
+ */
 private val winningCombinations = listOf(
     0b111000000L, 0b000111000L, 0b000000111L, // rows
     0b100100100L, 0b010010010L, 0b001001001L, // columns
