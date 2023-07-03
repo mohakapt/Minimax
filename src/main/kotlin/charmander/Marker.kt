@@ -6,6 +6,11 @@ package charmander
 enum class Marker {
     X, O;
 
+    /**
+     * Returns the opposite marker.
+     *
+     * @return `X` if the marker is `O`, `O` if the marker is `X`.
+     */
     val opposite: Marker
         get() = if (this == X) O else X
 }
