@@ -72,8 +72,7 @@ private val winningCombinations = listOf(
  */
 val Board.isBoardFull: Boolean
     get() {
-        val board = stateX or stateO
-        return board.countOneBits() == cellCount
+        return state.countOneBits() == cellCount
     }
 
 /**
