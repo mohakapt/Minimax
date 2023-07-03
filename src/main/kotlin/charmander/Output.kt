@@ -1,11 +1,51 @@
 package charmander
 
 private fun Board.outputCell(index: Int, cell: Marker?, highlight: Boolean): String {
-    TODO("I will have a look at this later")
+    var output = ""
+
+    if (highlight) {
+        output += "\u001B[33m"
+    }
+    output += when (cell) {
+        Marker.X -> "  X  "
+        Marker.O -> "  O  "
+        else -> "     "
+    }
+    if (highlight) {
+        output += "\u001B[0m"
+    }
+
+    if (index % boardSize != boardSize - 1) {
+        output += "│"
+    }
+
+    return output
 }
 
 private fun Board.outputBoard(highlightLastMove: Boolean = true): String {
-    TODO("I will have a look at this later")
+    val horizontalLine = List(boardSize) { "─────" }.joinToString("┼")
+
+    var output = ""
+    repeat(boardSize) { y ->
+        repeat(boardSize) { x ->
+            val index = y * boardSize + x
+            val xValue = (stateX shr index) and 1
+            val oValue = (stateO shr index) and 1
+            val cell = when {
+                xValue == 1L -> Marker.X
+                oValue == 1L -> Marker.O
+                else -> null
+            }
+            output += outputCell(index, cell, highlightLastMove && index == lastMove)
+        }
+
+        output += "\n"
+        if (y != boardSize - 1) {
+            output += horizontalLine + "\n"
+        }
+    }
+
+    return output
 }
 
 /**
