@@ -134,5 +134,15 @@ val Board.availableMoves: List<Int>
  * @see Board.boardSize
  */
 fun Board.makeMove(move: Int): Board {
-    TODO("I will have a look at this later")
+    if (evaluation != null)
+        throw IllegalStateException("The game is already over.")
+    if (move !in 0..<cellCount)
+        throw IllegalArgumentException("The index is out of bounds.")
+    if (state and (1L shl move) != 0L)
+        throw IllegalArgumentException("The cell is already occupied.")
+
+    val newStateX = if (turn == Marker.X) stateX or (1L shl move) else stateX
+    val newStateO = if (turn == Marker.O) stateO or (1L shl move) else stateO
+
+    return Board(boardSize, newStateX, newStateO, turn.opposite, move)
 }
