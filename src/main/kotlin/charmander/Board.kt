@@ -111,15 +111,13 @@ val Board.evaluation: Int?
  */
 val Board.availableMoves: List<Int>
     get() {
-        val board = stateX or stateO
         val moves = mutableListOf<Int>()
 
         repeat(cellCount) {
-            if (board and (1L shl it) == 0L) {
+            if (state and (1L shl it) == 0L)
                 moves.add(it)
-            }
         }
-        
+
         return moves
     }
 
