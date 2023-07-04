@@ -58,11 +58,7 @@ val Board.Companion.empty5x5: Board
  * Stores the winning combinations for a 3x3 board as bitboards.
  * This is a temporary solution until I find a better way to do this.
  */
-private val winningCombinations = listOf(
-    0b111000000L, 0b000111000L, 0b000000111L, // rows
-    0b100100100L, 0b010010010L, 0b001001001L, // columns
-    0b100010001L, 0b001010100L // diagonals
-)
+private val winningCombinations = getWinningCombinations(3)
 
 private fun getWinningCombinations(boardSize: Int): List<Long> {
     val wins = mutableListOf<Long>()
