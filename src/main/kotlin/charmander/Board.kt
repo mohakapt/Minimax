@@ -30,6 +30,12 @@ data class Board(
         get() = stateX or stateO
 }
 
+/**
+ * Creates an empty board of the given size.
+ *
+ * @param boardSize The size of the board, i.e. the number of rows and columns.
+ * @return A new empty board with the given size.
+ */
 fun Board.Companion.empty(boardSize: Int): Board {
     require(boardSize >= 3) { "Board size must be greater than or equal to 3." }
     require(boardSize <= 8) { "Board size must be less than or equal to 8." }
