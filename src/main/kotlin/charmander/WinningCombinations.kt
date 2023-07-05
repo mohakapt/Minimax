@@ -29,3 +29,7 @@ fun getWinningCombinations(boardSize: Int): List<Long> {
 
     return wins
 }
+
+object WinningCombinations {
+    fun get(boardSize: Int): List<Long> = getWinningCombinations(boardSize)
+}

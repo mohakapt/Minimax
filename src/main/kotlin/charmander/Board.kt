@@ -78,6 +78,7 @@ val Board.isBoardFull: Boolean
  */
 val Board.evaluation: Int?
     get() {
+        val winningCombinations = WinningCombinations.get(boardSize)
         for (combination in winningCombinations) {
             if (stateX and combination == combination) return 1
             if (stateO and combination == combination) return -1
