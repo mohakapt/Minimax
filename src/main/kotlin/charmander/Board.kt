@@ -30,6 +30,13 @@ data class Board(
         get() = stateX or stateO
 }
 
+fun Board.Companion.empty(boardSize: Int): Board {
+    require(boardSize >= 3) { "Board size must be greater than or equal to 3." }
+    require(boardSize <= 8) { "Board size must be less than or equal to 8." }
+
+    return Board(boardSize, 0b0, 0b0, Marker.X, null)
+}
+
 /**
  * Creates an empty board of 3 x 3 cells.
  *
