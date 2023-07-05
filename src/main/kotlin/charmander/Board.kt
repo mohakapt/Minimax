@@ -44,30 +44,6 @@ fun Board.Companion.empty(boardSize: Int): Board {
 }
 
 /**
- * Creates an empty board of 3 x 3 cells.
- *
- * @return A new empty board with the size of 9.
- */
-val Board.Companion.empty3x3: Board
-    get() = Board(3, 0b0, 0b0, Marker.X, null)
-
-/**
- * Creates an empty board of 4 x 4 cells.
- *
- * @return A new empty board with the size of 16.
- */
-val Board.Companion.empty4x4: Board
-    get() = Board(4, 0b0, 0b0, Marker.X, null)
-
-/**
- * Creates an empty board of 5 x 5 cells.
- *
- * @return A new empty board with the size of 25.
- */
-val Board.Companion.empty5x5: Board
-    get() = Board(5, 0b0, 0b0, Marker.X, null)
-
-/**
  * Checks if the board is full.
  *
  * @return `true` if the board is full, `false` otherwise.

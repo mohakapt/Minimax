@@ -6,7 +6,7 @@ fun main(args: Array<String>) {
 }
 
 private fun testEngine() {
-    var board = Board.empty3x3
+    var board = Board.empty(3)
     var evaluation: Int
 
     board.printBoard()

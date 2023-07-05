@@ -16,7 +16,7 @@ object CharmanderVsDooz {
         var draw = 0
 
         repeat(gameCount) {
-            var board = Board.empty3x3
+            var board = Board.empty(3)
             val startingPlayer = if (it % 2 == 0) Marker.X else Marker.O
 
             while (board.evaluation == null) {
