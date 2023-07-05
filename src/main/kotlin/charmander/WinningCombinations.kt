@@ -1,5 +1,8 @@
 package charmander
 
+/**
+ * Stores the winning combinations for a given board size.
+ */
 object WinningCombinations {
     private fun generate(boardSize: Int): List<Long> {
         val wins = mutableListOf<Long>()
@@ -32,5 +35,12 @@ object WinningCombinations {
     }
 
     private val cache = mutableMapOf<Int, List<Long>>()
+
+    /**
+     * Gets the winning combinations for a given board size.
+     *
+     * @param boardSize The size of the board.
+     * @return A list of the winning combinations as bitmasks.
+     */
     fun get(boardSize: Int): List<Long> = cache.computeIfAbsent(boardSize, ::generate)
 }
