@@ -132,12 +132,9 @@ val Board.availableMoves: List<Int>
  * @see Board.boardSize
  */
 fun Board.makeMove(move: Int): Board {
-    if (evaluation != null)
-        throw IllegalStateException("The game is already over.")
-    if (move !in 0..<cellCount)
-        throw IllegalArgumentException("The index is out of bounds.")
-    if (state and (1L shl move) != 0L)
-        throw IllegalArgumentException("The cell is already occupied.")
+    check(evaluation == null) { "The game is already over." }
+    require(move in 0..<cellCount) { "The index is out of bounds." }
+    require(state and (1L shl move) == 0L) { "The cell is already occupied." }
 
     val newStateX = if (turn == Marker.X) stateX or (1L shl move) else stateX
     val newStateO = if (turn == Marker.O) stateO or (1L shl move) else stateO
