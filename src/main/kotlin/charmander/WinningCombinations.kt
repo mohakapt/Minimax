@@ -31,5 +31,6 @@ object WinningCombinations {
         return wins
     }
 
-    fun get(boardSize: Int): List<Long> = generate(boardSize)
+    private val cache = mutableMapOf<Int, List<Long>>()
+    fun get(boardSize: Int): List<Long> = cache.computeIfAbsent(boardSize, ::generate)
 }
