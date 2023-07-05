@@ -55,12 +55,6 @@ val Board.Companion.empty5x5: Board
     get() = Board(5, 0b0, 0b0, Marker.X, null)
 
 /**
- * Stores the winning combinations for a 3x3 board as bitboards.
- * This is a temporary solution until I find a better way to do this.
- */
-private val winningCombinations = getWinningCombinations(3)
-
-/**
  * Checks if the board is full.
  *
  * @return `true` if the board is full, `false` otherwise.
