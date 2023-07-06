@@ -15,7 +15,7 @@ fun minimax(board: Board): Int {
     }
 
     val maximizing = board.turn == Marker.X
-    var bestEvaluation = if (maximizing) -1 else 1
+    var bestEvaluation = if (maximizing) Int.MIN_VALUE else Int.MAX_VALUE
     var bestMove = -1
 
     // The moves are shuffled to make the engine more interesting by avoiding always picking the same move.
