@@ -5,6 +5,7 @@ package charmander
  * Also, Records the best move in the global variable [awesomeMove]
  *
  * @param board The board to evaluate.
+ * @param depth The depth of the current move, used to give more weight to faster wins.
  * @return `1` if the game is a win for `X`, `-1` if the game is a win for `O`, `0` if the game is a tie.
  * @see awesomeMove
  */
