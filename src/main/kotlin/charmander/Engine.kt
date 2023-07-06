@@ -8,10 +8,10 @@ package charmander
  * @return `1` if the game is a win for `X`, `-1` if the game is a win for `O`, `0` if the game is a tie.
  * @see awesomeMove
  */
-fun minimax(board: Board): Int {
+fun minimax(board: Board, depth: Int = 0): Int {
     val boardEvaluation = board.evaluation
     if (boardEvaluation != null) {
-        return boardEvaluation
+        return boardEvaluation * (100 - depth)
     }
 
     val maximizing = board.turn == Marker.X
@@ -23,7 +23,7 @@ fun minimax(board: Board): Int {
 
     for (move in moves) {
         val virtualBoard = board.makeMove(move)
-        val moveEvaluation = minimax(virtualBoard)
+        val moveEvaluation = minimax(virtualBoard, depth + 1)
 
         val foundBetterMove =
             if (maximizing) moveEvaluation > bestEvaluation
