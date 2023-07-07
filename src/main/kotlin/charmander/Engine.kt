@@ -1,5 +1,12 @@
 package charmander
 
+/**
+ * Evaluates the given board and returns a score adjusted by the depth of the move.
+ *
+ * @param board The board to evaluate.
+ * @param depth The depth of the current move, used to give more weight to faster wins.
+ * @return `1` if the game is a win for `X`, `-1` if the game is a win for `O`, `0` if the game is a tie, and `null` if the game is still in progress.
+ */
 private fun evaluate(board: Board, depth: Int): Int? {
     val boardEvaluation = board.evaluation
     if (boardEvaluation != null) {
@@ -20,7 +27,7 @@ private fun evaluate(board: Board, depth: Int): Int? {
  * @param alpha The best score that the maximizing player can guarantee at that level or below.
  * @param beta The best score that the minimizing player can guarantee at that level or below.
  * @param depth The depth of the current move, used to give more weight to faster wins.
- * @return `1` if the game is a win for `X`, `-1` if the game is a win for `O`, `0` if the game is a tie.
+ * @return `1` if the game is a win for `X`, `-1` if the game is a win for `O`, and `0` if the game is a tie.
  * @see awesomeMove
  */
 fun minimax(board: Board, alpha: Int = Int.MIN_VALUE, beta: Int = Int.MAX_VALUE, depth: Int = 0): Int {
