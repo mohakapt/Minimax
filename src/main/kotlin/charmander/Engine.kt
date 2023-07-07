@@ -1,5 +1,14 @@
 package charmander
 
+private fun evaluate(board: Board, depth: Int): Int? {
+    val boardEvaluation = board.evaluation
+    if (boardEvaluation != null) {
+        return boardEvaluation * (100 - depth)
+    }
+
+    return null
+}
+
 /**
  * Calculates the final evaluation of the given board.
  * Also, Records the best move in the global variable [awesomeMove]
@@ -15,10 +24,7 @@ package charmander
  * @see awesomeMove
  */
 fun minimax(board: Board, alpha: Int = Int.MIN_VALUE, beta: Int = Int.MAX_VALUE, depth: Int = 0): Int {
-    val boardEvaluation = board.evaluation
-    if (boardEvaluation != null) {
-        return boardEvaluation * (100 - depth)
-    }
+    evaluate(board, depth)?.let { return it }
 
     val maximizing = board.turn == Marker.X
     var bestEvaluation = if (maximizing) Int.MIN_VALUE else Int.MAX_VALUE
