@@ -36,6 +36,8 @@ fun minimax(board: Board, alpha: Int = Int.MIN_VALUE, beta: Int = Int.MAX_VALUE,
     val maximizing = board.turn == Marker.X
     var bestEvaluation = if (maximizing) Int.MIN_VALUE else Int.MAX_VALUE
     var bestMove = -1
+    var alpha = alpha
+    var beta = beta
 
     // The moves are shuffled to make the engine more interesting by avoiding always picking the same move.
     val moves = board.availableMoves.shuffled()
@@ -45,13 +47,21 @@ fun minimax(board: Board, alpha: Int = Int.MIN_VALUE, beta: Int = Int.MAX_VALUE,
         val moveEvaluation = minimax(virtualBoard, alpha, beta, depth + 1)
 
         val foundBetterMove =
-            if (maximizing) moveEvaluation > bestEvaluation
-            else moveEvaluation < bestEvaluation
+            if (maximizing) {
+                alpha = alpha.coerceAtLeast(moveEvaluation)
+                moveEvaluation > bestEvaluation
+            } else {
+                beta = beta.coerceAtMost(moveEvaluation)
+                moveEvaluation < bestEvaluation
+            }
 
         if (foundBetterMove) {
             bestEvaluation = moveEvaluation
             bestMove = move
         }
+
+        if (alpha >= beta)
+            break
     }
 
     awesomeMove = bestMove
