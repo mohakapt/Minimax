@@ -1,4 +1,4 @@
-package charmander
+package charmeleon
 
 /**
  * Represents a board of a Tic-Tac-Toe game.

@@ -1,4 +1,4 @@
-package charmander
+package charmeleon
 
 /**
  * Represents a marker on the board.

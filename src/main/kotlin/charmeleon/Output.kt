@@ -1,4 +1,4 @@
-package charmander
+package charmeleon
 
 private fun Board.outputCell(index: Int, cell: Marker?, highlight: Boolean): String {
     var output = ""

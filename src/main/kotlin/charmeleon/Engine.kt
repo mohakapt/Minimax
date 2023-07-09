@@ -1,4 +1,4 @@
-package charmander
+package charmeleon
 
 /**
  * Evaluates the given board and returns a score adjusted by the depth of the move.

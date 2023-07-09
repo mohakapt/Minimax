@@ -1,6 +1,6 @@
 package dooz
 
-import charmander.Board
+import charmeleon.Board
 import dooz.ai.SimpleGameAi
 import dooz.model.AiDifficulty
 import dooz.model.DoozCell

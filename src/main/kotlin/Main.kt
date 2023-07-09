@@ -1,12 +1,13 @@
-import charmander.*
+import charmeleon.*
 import kotlin.system.measureNanoTime
 
 fun main(args: Array<String>) {
-    CharmanderVsDooz.playMatch(30)
+//    CharmanderVsDooz.playMatch(30)
+    testEngine()
 }
 
 private fun testEngine() {
-    var board = Board.empty(3)
+    var board = Board.empty(4)
     var evaluation: Int
 
     board.printBoard()

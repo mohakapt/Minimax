@@ -1,4 +1,4 @@
-package charmander
+package charmeleon
 
 /**
  * Stores the winning combinations for a given board size.

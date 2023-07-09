@@ -1,4 +1,4 @@
-package charmander
+package charmeleon
 
 /**
  * Stores the best move found by the engine, gets updated after calling [minimax].
