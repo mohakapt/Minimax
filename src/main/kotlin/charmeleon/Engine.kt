@@ -19,7 +19,7 @@ private fun evaluate(board: Board, depth: Int): Int? {
 /**
  * Calculates the final evaluation of the given board.
  * Also, Records the best move in the global variable [awesomeMove]
- * so that it can be used later by the [Charmander] engine.
+ * so that it can be used later by the [Charmeleon] engine.
  * This is a recursive function, it calls itself to evaluate the board after each possible move.
  * To use it for the first time, you should call it with the default parameters.
  *

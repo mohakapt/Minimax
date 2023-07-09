@@ -2,16 +2,16 @@ import charmeleon.*
 import dooz.Dooz
 
 /**
- * This is a match between Charmander and Dooz playing Tic-Tac-Toe against each other.
+ * This is a match between Charmeleon and Dooz playing Tic-Tac-Toe against each other.
  */
-object CharmanderVsDooz {
+object CharmeleonVsDooz {
     /**
-     * Plays a match between Charmander and Dooz.
+     * Plays a match between Charmeleon and Dooz.
      *
      * @param gameCount The number of games to play.
      */
     fun playMatch(gameCount: Int) {
-        var charmander = 0
+        var charmeleon = 0
         var dooz = 0
         var draw = 0
 
@@ -24,7 +24,7 @@ object CharmanderVsDooz {
                 Thread.sleep(200)
 
                 val suggestedMove = if (board.turn == startingPlayer)
-                    Charmander.suggestMove(board)
+                    Charmeleon.suggestMove(board)
                 else
                     Dooz.suggestMove(board)
 
@@ -34,14 +34,14 @@ object CharmanderVsDooz {
                 board.printBoard()
             }
 
-            val charmanderWon =
+            val charmeleonWon =
                 (board.evaluation == 1 && startingPlayer == Marker.X) || (board.evaluation == -1 && startingPlayer == Marker.O)
             val doozWon =
                 (board.evaluation == -1 && startingPlayer == Marker.X) || (board.evaluation == 1 && startingPlayer == Marker.O)
 
-            if (charmanderWon) {
-                charmander++
-                print("Charmander wins!")
+            if (charmeleonWon) {
+                charmeleon++
+                print("Charmeleon wins!")
             } else if (doozWon) {
                 dooz++
                 print("Dooz wins!")
@@ -55,7 +55,7 @@ object CharmanderVsDooz {
         }
 
         println("Overview: \n")
-        println("Charmander: $charmander")
+        println("Charmeleon: $charmeleon")
         println("Dooz: $dooz")
         println("Draw: $draw")
         overflowConsole()
