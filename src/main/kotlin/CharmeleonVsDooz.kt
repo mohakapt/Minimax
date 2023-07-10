@@ -8,6 +8,7 @@ object CharmeleonVsDooz {
     /**
      * Plays a match between Charmeleon and Dooz.
      *
+     * @param boardSize The size of the board, i.e. the number of rows and columns.
      * @param gameCount The number of games to play.
      */
     fun playMatch(boardSize: Int, gameCount: Int) {
