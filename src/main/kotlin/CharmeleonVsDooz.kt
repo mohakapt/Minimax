@@ -10,13 +10,13 @@ object CharmeleonVsDooz {
      *
      * @param gameCount The number of games to play.
      */
-    fun playMatch(gameCount: Int) {
+    fun playMatch(boardSize: Int, gameCount: Int) {
         var charmeleon = 0
         var dooz = 0
         var draw = 0
 
         repeat(gameCount) {
-            var board = Board.empty(3)
+            var board = Board.empty(boardSize)
             val startingPlayer = if (it % 2 == 0) Marker.X else Marker.O
 
             while (board.evaluation == null) {
