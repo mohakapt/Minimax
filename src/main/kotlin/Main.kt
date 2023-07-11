@@ -2,7 +2,7 @@ import charmeleon.*
 import kotlin.system.measureNanoTime
 
 fun main(args: Array<String>) {
-    CharmeleonVsDooz.playMatch(30)
+    CharmeleonVsDooz.playMatch(4, 10)
 //    testEngine()
 }
 
