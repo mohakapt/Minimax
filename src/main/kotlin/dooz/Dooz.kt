@@ -21,24 +21,26 @@ object Dooz {
      */
     fun suggestMove(board: Board, difficulty: AiDifficulty = AiDifficulty.Hard): Int {
         val boardSize = board.boardSize
+        val gameCells = boardToGameCells(board)
+
+        val move = SimpleGameAi(gameCells, difficulty).play()
+        return move.x + move.y * boardSize
+    }
+
+    private fun boardToGameCells(board: Board): List<List<DoozCell>> {
+        val boardSize = board.boardSize
         val playerX = Player("X", "X", 0, PlayerType.Computer)
         val playerO = Player("O", "O", 1, PlayerType.Human)
 
-        val stateX: Long = board.stateX
-        val stateO: Long = board.stateO
-
-        val gameCells = List(board.cellCount) {
+        return List(board.cellCount) {
             val x = it % boardSize
             val y = it / boardSize
             val player = when {
-                stateX and (1L shl it) != 0L -> playerX
-                stateO and (1L shl it) != 0L -> playerO
+                board.stateX and (1L shl it) != 0L -> playerX
+                board.stateO and (1L shl it) != 0L -> playerO
                 else -> null
             }
             DoozCell(x, y, player)
         }.chunked(boardSize)
-
-        val move = SimpleGameAi(gameCells, difficulty).play()
-        return move.x + move.y * boardSize
     }
 }
