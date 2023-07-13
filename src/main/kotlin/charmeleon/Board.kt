@@ -64,6 +64,17 @@ fun Board.markerAt(index: Int): Marker? {
     }
 }
 
+fun Board.coordinatesOf(index: Int): Pair<Int, Int> {
+    val x = index % boardSize
+    val y = index / boardSize
+
+    return x to y
+}
+
+fun Board.indexOf(x: Int, y: Int): Int {
+    return y * boardSize + x
+}
+
 /**
  * Checks if the board is full.
  *
