@@ -53,6 +53,10 @@ fun Board.Companion.empty(boardSize: Int): Board {
  */
 fun Board.markerAt(x: Int, y: Int): Marker? {
     val index = y * boardSize + x
+    return markerAt(index)
+}
+
+fun Board.markerAt(index: Int): Marker? {
     return when {
         stateX and (1L shl index) != 0L -> Marker.X
         stateO and (1L shl index) != 0L -> Marker.O
