@@ -67,9 +67,7 @@ fun Board.markerAt(x: Int, y: Int): Marker? {
  * @see Board.cellCount
  */
 val Board.isBoardFull: Boolean
-    get() {
-        return state.countOneBits() == cellCount
-    }
+    get() = state.countOneBits() == cellCount
 
 /**
  * Computes the current evaluation of the board.
