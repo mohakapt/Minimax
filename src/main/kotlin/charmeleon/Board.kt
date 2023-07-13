@@ -43,6 +43,15 @@ fun Board.Companion.empty(boardSize: Int): Board {
     return Board(boardSize, 0b0, 0b0, Marker.X, null)
 }
 
+fun Board.markerAt(x: Int, y: Int): Marker? {
+    val index = y * boardSize + x
+    return when {
+        stateX and (1L shl index) != 0L -> Marker.X
+        stateO and (1L shl index) != 0L -> Marker.O
+        else -> null
+    }
+}
+
 /**
  * Checks if the board is full.
  *
