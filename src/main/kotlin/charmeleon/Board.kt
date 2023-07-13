@@ -43,6 +43,14 @@ fun Board.Companion.empty(boardSize: Int): Board {
     return Board(boardSize, 0b0, 0b0, Marker.X, null)
 }
 
+/**
+ * Retrieves the marker at the given cell.
+ *
+ * @param x The x-coordinate of the cell.
+ * @param y The y-coordinate of the cell.
+ * @return The marker at the given cell, or `null` if the cell is empty.
+ * @see Marker
+ */
 fun Board.markerAt(x: Int, y: Int): Marker? {
     val index = y * boardSize + x
     return when {
