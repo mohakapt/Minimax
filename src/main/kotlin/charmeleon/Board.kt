@@ -44,7 +44,7 @@ fun Board.Companion.empty(boardSize: Int): Board {
 }
 
 /**
- * Retrieves the marker at the given cell.
+ * Retrieves the marker at the given coordinates.
  *
  * @param x The x-coordinate of the cell.
  * @param y The y-coordinate of the cell.
@@ -56,6 +56,13 @@ fun Board.markerAt(x: Int, y: Int): Marker? {
     return markerAt(index)
 }
 
+/**
+ * Retrieves the marker at the given index.
+ *
+ * @param index The index of the cell.
+ * @return The marker at the given cell, or `null` if the cell is empty.
+ * @see Marker
+ */
 fun Board.markerAt(index: Int): Marker? {
     return when {
         stateX and (1L shl index) != 0L -> Marker.X
@@ -64,6 +71,13 @@ fun Board.markerAt(index: Int): Marker? {
     }
 }
 
+/**
+ * Calculates the coordinates of a cell given its index.
+ *
+ * @param index The index of the cell.
+ * @return The coordinates of the cell as a pair of x and y coordinates.
+ * @see Board.cellCount
+ */
 fun Board.coordinatesOf(index: Int): Pair<Int, Int> {
     val x = index % boardSize
     val y = index / boardSize
@@ -71,6 +85,14 @@ fun Board.coordinatesOf(index: Int): Pair<Int, Int> {
     return x to y
 }
 
+/**
+ * Calculates the index of a cell given its coordinates.
+ *
+ * @param x The x-coordinate of the cell.
+ * @param y The y-coordinate of the cell.
+ * @return The index of the cell.
+ * @see Board.cellCount
+ */
 fun Board.indexOf(x: Int, y: Int): Int {
     return y * boardSize + x
 }
