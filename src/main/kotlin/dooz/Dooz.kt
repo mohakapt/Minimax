@@ -1,6 +1,9 @@
 package dooz
 
 import charmeleon.Board
+import charmeleon.Marker
+import charmeleon.coordinatesOf
+import charmeleon.markerAt
 import dooz.ai.SimpleGameAi
 import dooz.model.AiDifficulty
 import dooz.model.DoozCell
@@ -28,18 +31,20 @@ object Dooz {
 
     private fun boardToGameCells(board: Board): List<List<DoozCell>> {
         val boardSize = board.boardSize
-        val playerX = Player("X", "X", 0, PlayerType.Computer)
-        val playerO = Player("O", "O", 1, PlayerType.Human)
 
         return List(board.cellCount) {
-            val x = it % boardSize
-            val y = it / boardSize
-            val player = when {
-                board.stateX and (1L shl it) != 0L -> playerX
-                board.stateO and (1L shl it) != 0L -> playerO
-                else -> null
-            }
+            val (x, y) = board.coordinatesOf(it)
+            val player = board.markerAt(x, y)?.asDoozPlayer
             DoozCell(x, y, player)
         }.chunked(boardSize)
     }
+
+    private val playerX = Player("X", "X", 0, PlayerType.Computer)
+    private val playerO = Player("O", "O", 1, PlayerType.Human)
+
+    private val Marker.asDoozPlayer: Player
+        get() = when (this) {
+            Marker.X -> playerX
+            Marker.O -> playerO
+        }
 }
