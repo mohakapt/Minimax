@@ -13,4 +13,6 @@ enum class Marker {
      */
     val opposite: Marker
         get() = if (this == X) O else X
+    val asString: String
+        get() = if (this == X) "X" else "O"
 }
