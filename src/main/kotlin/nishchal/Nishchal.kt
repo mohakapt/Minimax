@@ -1,7 +1,7 @@
 package nishchal
 
 import charmeleon.Board
-import charmeleon.Marker
+import charmeleon.markerAt
 
 object Nishchal {
     fun suggestMove(board: Board): Int {
@@ -18,18 +18,13 @@ object Nishchal {
     }
 
     private fun boardToState(board: Board): State {
-        val state = State()
-        state.board = List(board.cellCount) {
-            when {
-                board.stateX and (1L shl it) != 0L -> "X"
-                board.stateO and (1L shl it) != 0L -> "O"
-                else -> null
-            }
-        }.chunked(board.boardSize).map { it.toTypedArray() }.toTypedArray()
-        state.nextPlayer = when (board.turn) {
-            Marker.X -> "X"
-            Marker.O -> "O"
+        val state = List(board.cellCount) { board.markerAt(it)?.asString }
+            .chunked(board.boardSize)
+            .map { it.toTypedArray() }.toTypedArray()
+
+        return State().also {
+            it.board = state
+            it.nextPlayer = board.turn.asString
         }
-        return state
     }
 }
