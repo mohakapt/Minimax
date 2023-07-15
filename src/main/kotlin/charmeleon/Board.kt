@@ -15,11 +15,11 @@ data class Board(
     val stateX: Long,
     val stateO: Long,
     val turn: Marker,
-    val lastMove: Int?,
 ) {
     companion object
 
     val cellCount = boardSize * boardSize
+    var lastMove: Int? = -1
 
     /**
      * Returns the state of the board as a bitboard.
@@ -40,7 +40,7 @@ fun Board.Companion.empty(boardSize: Int): Board {
     require(boardSize >= 3) { "Board size must be greater than or equal to 3." }
     require(boardSize <= 8) { "Board size must be less than or equal to 8." }
 
-    return Board(boardSize, 0b0, 0b0, Marker.X, null)
+    return Board(boardSize, 0b0, 0b0, Marker.X)
 }
 
 /**
@@ -173,5 +173,7 @@ fun Board.makeMove(move: Int): Board {
     val newStateX = if (turn == Marker.X) stateX or (1L shl move) else stateX
     val newStateO = if (turn == Marker.O) stateO or (1L shl move) else stateO
 
-    return Board(boardSize, newStateX, newStateO, turn.opposite, move)
+    return Board(boardSize, newStateX, newStateO, turn.opposite).also {
+        it.lastMove = move
+    }
 }
