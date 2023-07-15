@@ -63,7 +63,3 @@ object CharmeleonVsNishchal {
         println()
     }
 }
-
-private fun overflowConsole() {
-    println("\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n")
-}
