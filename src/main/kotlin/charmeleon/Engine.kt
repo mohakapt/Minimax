@@ -1,22 +1,6 @@
 package charmeleon
 
 /**
- * Evaluates the given board and returns a score adjusted by the depth of the move.
- *
- * @param board The board to evaluate.
- * @param depth The depth of the current move, used to give more weight to faster wins.
- * @return `1` if the game is a win for `X`, `-1` if the game is a win for `O`, `0` if the game is a tie, and `null` if the game is still in progress.
- */
-private fun evaluate(board: Board, depth: Int): Int? {
-    val boardEvaluation = board.evaluation
-    if (boardEvaluation != null) {
-        return boardEvaluation * (100 - depth)
-    }
-
-    return null
-}
-
-/**
  * Calculates the final evaluation of the given board.
  * Also, Records the best move in the global variable [awesomeMove]
  * so that it can be used later by the [Charmeleon] engine.
@@ -30,21 +14,39 @@ private fun evaluate(board: Board, depth: Int): Int? {
  * @return `1` if the game is a win for `X`, `-1` if the game is a win for `O`, and `0` if the game is a tie.
  * @see awesomeMove
  */
-fun minimax(board: Board, alpha: Int = Int.MIN_VALUE, beta: Int = Int.MAX_VALUE, depth: Int = 0): Int {
-    evaluate(board, depth)?.let { return it }
+fun minimax(board: Board, depth: Int = 0, alpha: Int = Int.MIN_VALUE, beta: Int = Int.MAX_VALUE): Evaluation {
+    var alpha = alpha
+    var beta = beta
+
+    val transposition = TranspositionTable.get(board)
+    if (transposition != null && transposition.depth <= depth) {
+        when (transposition.type) {
+            NodeType.EXACT -> return transposition
+            NodeType.LOWER_BOUND -> alpha = alpha.coerceAtLeast(transposition.score)
+            NodeType.UPPER_BOUND -> beta = beta.coerceAtMost(transposition.score)
+        }
+
+        if (alpha >= beta)
+            return transposition
+    }
+
+    val boardScore = board.score
+    if (boardScore != null) {
+        val adjustedScore = boardScore * (100 - depth)
+        return Evaluation(adjustedScore, NodeType.EXACT, depth)
+    }
 
     val maximizing = board.turn == Marker.X
     var bestScore = if (maximizing) Int.MIN_VALUE else Int.MAX_VALUE
     var bestMove = -1
-    var alpha = alpha
-    var beta = beta
 
     // The moves are shuffled to make the engine more interesting by avoiding always picking the same move.
     val moves = board.availableMoves.shuffled()
 
     for (move in moves) {
         val virtualBoard = board.makeMove(move)
-        val moveEvaluation = minimax(virtualBoard, alpha, beta, depth + 1)
+        val moveEvaluation = minimax(virtualBoard, depth + 1, alpha, beta)
+        val moveScore = moveEvaluation.score
 
         val foundBetterMove =
             if (maximizing) {
@@ -64,6 +66,13 @@ fun minimax(board: Board, alpha: Int = Int.MIN_VALUE, beta: Int = Int.MAX_VALUE,
             break
     }
 
-    awesomeMove = bestMove
-    return bestEvaluation
+    val nodeType = when {
+        bestScore <= alpha -> NodeType.LOWER_BOUND
+        bestScore >= beta -> NodeType.UPPER_BOUND
+        else -> NodeType.EXACT
+    }
+    val evaluation = Evaluation(bestScore, nodeType, depth, bestMove)
+    TranspositionTable.put(board, evaluation)
+
+    return evaluation
 }
