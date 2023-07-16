@@ -40,8 +40,11 @@ fun minimax(board: Board, depth: Int = 0, alpha: Int = Int.MIN_VALUE, beta: Int 
     var bestScore = if (maximizing) Int.MIN_VALUE else Int.MAX_VALUE
     var bestMove = -1
 
-    // The moves are shuffled to make the engine more interesting by avoiding always picking the same move.
-    val moves = board.availableMoves.shuffled()
+    val moves = board.availableMoves.toMutableList()
+    if (transposition?.move != null) {
+        moves.remove(transposition.move)
+        moves.add(0, transposition.move)
+    }
 
     for (move in moves) {
         val virtualBoard = board.makeMove(move)
