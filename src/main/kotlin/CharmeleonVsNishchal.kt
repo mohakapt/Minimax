@@ -19,7 +19,7 @@ object CharmeleonVsNishchal {
             var board = Board.empty(4)
             val startingPlayer = if (it % 2 == 0) Marker.X else Marker.O
 
-            while (board.evaluation == null) {
+            while (board.score == null) {
                 overflowConsole()
                 Thread.sleep(200)
 
@@ -35,9 +35,9 @@ object CharmeleonVsNishchal {
             }
 
             val charmeleonWon =
-                (board.evaluation == 1 && startingPlayer == Marker.X) || (board.evaluation == -1 && startingPlayer == Marker.O)
+                (board.score == 1 && startingPlayer == Marker.X) || (board.score == -1 && startingPlayer == Marker.O)
             val nishchalWon =
-                (board.evaluation == -1 && startingPlayer == Marker.X) || (board.evaluation == 1 && startingPlayer == Marker.O)
+                (board.score == -1 && startingPlayer == Marker.X) || (board.score == 1 && startingPlayer == Marker.O)
 
             if (charmeleonWon) {
                 charmeleon++

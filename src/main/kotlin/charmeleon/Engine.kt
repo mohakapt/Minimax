@@ -34,7 +34,7 @@ fun minimax(board: Board, alpha: Int = Int.MIN_VALUE, beta: Int = Int.MAX_VALUE,
     evaluate(board, depth)?.let { return it }
 
     val maximizing = board.turn == Marker.X
-    var bestEvaluation = if (maximizing) Int.MIN_VALUE else Int.MAX_VALUE
+    var bestScore = if (maximizing) Int.MIN_VALUE else Int.MAX_VALUE
     var bestMove = -1
     var alpha = alpha
     var beta = beta
@@ -48,15 +48,15 @@ fun minimax(board: Board, alpha: Int = Int.MIN_VALUE, beta: Int = Int.MAX_VALUE,
 
         val foundBetterMove =
             if (maximizing) {
-                alpha = alpha.coerceAtLeast(moveEvaluation)
-                moveEvaluation > bestEvaluation
+                alpha = alpha.coerceAtLeast(moveScore)
+                moveScore > bestScore
             } else {
-                beta = beta.coerceAtMost(moveEvaluation)
-                moveEvaluation < bestEvaluation
+                beta = beta.coerceAtMost(moveScore)
+                moveScore < bestScore
             }
 
         if (foundBetterMove) {
-            bestEvaluation = moveEvaluation
+            bestScore = moveScore
             bestMove = move
         }
 

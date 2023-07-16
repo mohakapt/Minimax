@@ -107,11 +107,11 @@ val Board.isBoardFull: Boolean
     get() = state.countOneBits() == cellCount
 
 /**
- * Computes the current evaluation of the board.
+ * Computes the current score of the board.
  *
  * @return `1` if X won, `-1` if O won, `0` if the game is a tie, and `null` if the game is still in progress.
  */
-val Board.evaluation: Int?
+val Board.score: Int?
     get() {
         val winningCombinations = WinningCombinations.get(boardSize)
         for (combination in winningCombinations) {
@@ -162,11 +162,11 @@ val Board.availableMoves: List<Int>
  * @return A new board with the move made and the turn switched.
  * @throws IllegalStateException If the game is already over.
  * @throws IllegalArgumentException If the index is out of bounds or the cell is already occupied.
- * @see Board.evaluation
+ * @see Board.score
  * @see Board.boardSize
  */
 fun Board.makeMove(move: Int): Board {
-    check(evaluation == null) { "The game is already over." }
+    check(score == null) { "The game is already over." }
     require(move in 0..<cellCount) { "The index is out of bounds." }
     require(state and (1L shl move) == 0L) { "The cell is already occupied." }
 
