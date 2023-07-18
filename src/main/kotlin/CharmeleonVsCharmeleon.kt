@@ -1,7 +1,16 @@
 import charmeleon.*
 import kotlin.system.measureNanoTime
 
+/**
+ * This is a match between Charmeleon and itself.
+ */
 object CharmeleonVsCharmeleon {
+    /**
+     * Plays a match between two Charmeleons.
+     *
+     * @param boardSize The size of the board, i.e. the number of rows and columns.
+     * @param gameCount The number of games to play.
+     */
     fun playMatch(boardSize: Int, gameCount: Int) {
         var win = 0
         var draw = 0
