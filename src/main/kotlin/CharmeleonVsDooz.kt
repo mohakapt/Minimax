@@ -20,10 +20,9 @@ object CharmeleonVsDooz {
             var board = Board.empty(boardSize)
             val startingPlayer = if (it % 2 == 0) Marker.X else Marker.O
 
-                overflowConsole()
-                Thread.sleep(200)
+            overflowConsole()
+            Thread.sleep(200)
             while (board.score == null) {
-
                 val suggestedMove = if (board.turn == startingPlayer)
                     Charmeleon.suggestMove(board)
                 else
@@ -60,7 +59,5 @@ object CharmeleonVsDooz {
         println("Dooz: $dooz")
         println("Draw: $draw")
         overflowConsole()
-        println()
-        println()
     }
 }
