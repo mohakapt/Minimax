@@ -13,8 +13,9 @@ object Charmeleon {
      * @return The index of the suggested move.
      */
     fun suggestMove(board: Board): Int {
-        minimax(board)
-        return awesomeMove
+        if (counter++ % 16 == 0)
+            TranspositionTable.clear()
+
         val evaluation = minimax(board)
         return evaluation.move ?: throw IllegalStateException("No move was found, probably the board is full.")
     }
