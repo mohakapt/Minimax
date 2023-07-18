@@ -7,8 +7,9 @@ package charmeleon
  * @property stateX The state of the board for player `X` as a bitboard, where each bit represents a cell.
  * @property stateO The state of the board for player `O` as a bitboard, where each bit represents a cell.
  * @property turn The marker of the player whose turn it is.
- * @property lastMove The index of the last move made on the board.
  * @property cellCount The number of cells on the board.
+ * @property lastMove The index of the last move made on the board.
+ * @property state The state of the board as a bitboard.
  */
 data class Board(
     val boardSize: Int,
@@ -21,11 +22,6 @@ data class Board(
     val cellCount = boardSize * boardSize
     var lastMove: Int? = -1
 
-    /**
-     * Returns the state of the board as a bitboard.
-     *
-     * @return The state of the board as a bitboard.
-     */
     val state: Long
         get() = stateX or stateO
 }

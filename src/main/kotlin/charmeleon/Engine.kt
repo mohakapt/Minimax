@@ -2,8 +2,6 @@ package charmeleon
 
 /**
  * Calculates the final evaluation of the given board.
- * Also, Records the best move in the global variable [awesomeMove]
- * so that it can be used later by the [Charmeleon] engine.
  * This is a recursive function, it calls itself to evaluate the board after each possible move.
  * To use it for the first time, you should call it with the default parameters.
  *
@@ -11,8 +9,9 @@ package charmeleon
  * @param alpha The best score that the maximizing player can guarantee at that level or below.
  * @param beta The best score that the minimizing player can guarantee at that level or below.
  * @param depth The depth of the current move, used to give more weight to faster wins.
- * @return `1` if the game is a win for `X`, `-1` if the game is a win for `O`, and `0` if the game is a tie.
- * @see awesomeMove
+ * @return The best score of the board and the best move to get that score.
+ * @see score
+ * @see Evaluation
  */
 fun minimax(board: Board, depth: Int = 0, alpha: Int = Int.MIN_VALUE, beta: Int = Int.MAX_VALUE): Evaluation {
     var alpha = alpha
