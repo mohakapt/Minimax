@@ -5,7 +5,7 @@ fun overflowConsole() {
     println("\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n")
 }
 
-/**
- * Whether to print the boards to the console while playing matches.
- */
-var printBoards = false
+fun clearConsole() {
+    print("\u001b[H\u001b[2J")
+    System.out.flush()
+}
