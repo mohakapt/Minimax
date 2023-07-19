@@ -3,6 +3,11 @@ import dooz.Dooz
 import nishchal.Nishchal
 import kotlin.system.measureNanoTime
 
+/**
+ * The players in the game.
+ *
+ * @property friendlyName The friendly name of the player.
+ */
 enum class Player {
     CHARMELEON,
     DOOZ,
@@ -16,6 +21,14 @@ enum class Player {
         }
 }
 
+/**
+ * The starting player in the game.
+ *
+ * @property PLAYER_1 The first player.
+ * @property PLAYER_2 The second player.
+ * @property ALTERNATE The players alternate starting the game.
+ * @property RANDOM The starting player is chosen randomly.
+ */
 enum class StartingPlayer {
     PLAYER_1,
     PLAYER_2,
@@ -23,6 +36,19 @@ enum class StartingPlayer {
     RANDOM
 }
 
+/**
+ * A Tic-Tac-Toe match between two players.
+ *
+ * @property player1 The first player.
+ * @property player2 The second player.
+ * @property startingPlayer The player who starts the game.
+ * @property printBoards Whether to print the board after each move.
+ * @property delayMoves Whether to delay the game after each move.
+ * @constructor Creates a new match between the given players.
+ * @see Player
+ * @see StartingPlayer
+ * @see Board
+ */
 class Match(
     val player1: Player,
     val player2: Player,
@@ -36,6 +62,12 @@ class Match(
     private val player1MoveTimes = mutableListOf<Long>()
     private val player2MoveTimes = mutableListOf<Long>()
 
+    /**
+     * Starts a match between the two players.
+     *
+     * @param boardSize The size of the board, i.e. the number of rows and columns.
+     * @param gameCount The number of games to play.
+     */
     fun playMatch(boardSize: Int, gameCount: Int) {
         setupMatch()
         repeat(gameCount) {
