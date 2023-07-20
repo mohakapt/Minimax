@@ -69,8 +69,8 @@ fun minimax(board: Board, depth: Int = 0, alpha: Int = Int.MIN_VALUE, beta: Int 
     }
 
     val nodeType = when {
-        bestScore <= alpha -> NodeType.LOWER_BOUND
-        bestScore >= beta -> NodeType.UPPER_BOUND
+        bestScore <= alpha -> NodeType.UPPER_BOUND
+        bestScore >= beta -> NodeType.LOWER_BOUND
         else -> NodeType.EXACT
     }
     val evaluation = Evaluation(bestScore, nodeType, depth, bestMove)
