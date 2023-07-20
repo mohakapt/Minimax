@@ -9,13 +9,13 @@ import kotlin.system.measureNanoTime
  * @property friendlyName The friendly name of the player.
  */
 enum class Player {
-    CHARMELEON,
+    CHARIZARD,
     DOOZ,
     NISHCHAL;
 
     val friendlyName: String
         get() = when (this) {
-            CHARMELEON -> "Charmeleon"
+            CHARIZARD -> "Charizard"
             DOOZ -> "Dooz"
             NISHCHAL -> "Nishchal"
         }
@@ -115,7 +115,7 @@ class Match(
 
         val time = measureNanoTime {
             val suggestedMove = when (playingPlayer) {
-                Player.CHARMELEON -> Charizard.suggestMove(board)
+                Player.CHARIZARD -> Charizard.suggestMove(board)
                 Player.DOOZ -> Dooz.suggestMove(board)
                 Player.NISHCHAL -> Nishchal.suggestMove(board)
             }
