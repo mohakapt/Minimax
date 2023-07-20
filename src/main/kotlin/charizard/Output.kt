@@ -1,4 +1,4 @@
-package charmeleon
+package charizard
 
 private fun Board.outputCell(index: Int, highlight: Boolean): String {
     var output = ""

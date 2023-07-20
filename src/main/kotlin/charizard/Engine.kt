@@ -1,4 +1,4 @@
-package charmeleon
+package charizard
 
 /**
  * Calculates the final evaluation of the given board.

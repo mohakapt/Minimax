@@ -1,4 +1,4 @@
-import charmeleon.*
+import charizard.*
 import dooz.Dooz
 import nishchal.Nishchal
 import kotlin.system.measureNanoTime
@@ -115,7 +115,7 @@ class Match(
 
         val time = measureNanoTime {
             val suggestedMove = when (playingPlayer) {
-                Player.CHARMELEON -> Charmeleon.suggestMove(board)
+                Player.CHARMELEON -> Charizard.suggestMove(board)
                 Player.DOOZ -> Dooz.suggestMove(board)
                 Player.NISHCHAL -> Nishchal.suggestMove(board)
             }

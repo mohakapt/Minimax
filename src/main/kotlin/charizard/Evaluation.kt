@@ -1,4 +1,4 @@
-package charmeleon
+package charizard
 
 /**
  * The type of node in the search tree, used to determine the type of the evaluation.

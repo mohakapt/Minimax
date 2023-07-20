@@ -1,4 +1,4 @@
-package charmeleon
+package charizard
 
 /**
  * Stores the winning combinations for a given board size.

@@ -1,11 +1,11 @@
-package charmeleon
+package charizard
 
 /**
  * This is the first version of our engine, it's quite slow, but it should be unbeatable.
- * I call it Charmeleon because it's the second evolution of Charmander, It's still not a Charizard, but it's getting there.
+ * I call it Charizard because it's the third and final evolution of Charmander. It can be improved further, but it's a monster as is.
  * It uses the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax) to find the best move.
  */
-object Charmeleon {
+object Charizard {
     private var counter = 0
 
     private val randomMoves = mapOf(

@@ -1,9 +1,9 @@
 package dooz
 
-import charmeleon.Board
-import charmeleon.Marker
-import charmeleon.coordinatesOf
-import charmeleon.markerAt
+import charizard.Board
+import charizard.Marker
+import charizard.coordinatesOf
+import charizard.markerAt
 import dooz.ai.SimpleGameAi
 import dooz.model.AiDifficulty
 import dooz.model.DoozCell

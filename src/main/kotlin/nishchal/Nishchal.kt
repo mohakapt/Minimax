@@ -1,7 +1,7 @@
 package nishchal
 
-import charmeleon.Board
-import charmeleon.markerAt
+import charizard.Board
+import charizard.markerAt
 
 object Nishchal {
     fun suggestMove(board: Board): Int {

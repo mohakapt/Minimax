@@ -1,9 +1,9 @@
-package charmeleon
+package charizard
 
 /**
  * Stores the evaluations of already evaluated boards to avoid re-evaluating them.
  *
- * @see Charmeleon.suggestMove
+ * @see Charizard.suggestMove
  */
 object TranspositionTable {
     private val table = hashMapOf<Board, Evaluation>()

@@ -1,4 +1,4 @@
-package charmeleon
+package charizard
 
 /**
  * Represents a board of a Tic-Tac-Toe game.
