@@ -7,7 +7,9 @@ object BasicStrategy {
         winIfPossible(board, moves)?.let { return it }
         blockIfNecessary(board, moves)?.let { return it }
         takeCenterOrCorner(board, moves)?.let { return it }
+        workTowardsNearestWin(board, moves)?.let { return it }
         return moves.random()
+    }
 
     private fun winIfPossible(board: Board, moves: List<Int>): Int? {
         for (move in moves) {
@@ -61,5 +63,28 @@ object BasicStrategy {
 
         return null
     }
+
+    private fun workTowardsNearestWin(board: Board, moves: List<Int>): Int? {
+        val state = if (board.turn == Marker.X) board.stateX else board.stateO
+        val opponentState = if (board.turn == Marker.X) board.stateO else board.stateX
+        val winningCombinations = WinningCombinations.get(board.boardSize)
+            .filter { (it and opponentState) == 0L }
+            .sortedBy { (it and state).countOneBits() }
+
+        for (combination in winningCombinations) {
+            val cells = mutableListOf<Int>()
+            for (i in 0..<board.cellCount) {
+                val cell = 1L shl i
+                if (combination and cell == cell)
+                    cells.add(i)
+            }
+
+            for (move in cells.shuffled()) {
+                if (move in moves)
+                    return move
+            }
+        }
+
+        return null
     }
 }
