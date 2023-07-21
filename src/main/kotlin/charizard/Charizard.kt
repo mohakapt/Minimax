@@ -6,8 +6,6 @@ package charizard
  * It uses the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax) to find the best move.
  */
 object Charizard {
-    private var counter = 0
-
     private val randomMoves = mapOf(
         3 to 0,
         4 to 3,
@@ -21,9 +19,6 @@ object Charizard {
      * @return The index of the suggested move.
      */
     fun suggestMove(board: Board): Int {
-        if (counter++ % 16 == 0)
-            TranspositionTable.clear()
-
         val moves = board.availableMoves
         val playedMovesCount = board.cellCount - moves.size
         val randomMovesCount = randomMoves[board.boardSize] ?: 0
