@@ -68,13 +68,17 @@ fun minimax(board: Board, depth: Int = 0, alpha: Int = Int.MIN_VALUE, beta: Int 
             break
     }
 
-    val nodeType = when {
-        bestScore <= alpha -> NodeType.UPPER_BOUND
-        bestScore >= beta -> NodeType.LOWER_BOUND
-        else -> NodeType.EXACT
-    }
+    val nodeType = determineNodeType(bestScore, alpha, beta)
     val evaluation = Evaluation(bestScore, nodeType, depth, bestMove)
     TranspositionTable.put(board, evaluation)
 
     return evaluation
+}
+
+private fun determineNodeType(score: Int, alpha: Int, beta: Int): NodeType {
+    return when {
+        score <= alpha -> NodeType.UPPER_BOUND
+        score >= beta -> NodeType.LOWER_BOUND
+        else -> NodeType.EXACT
+    }
 }
