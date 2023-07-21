@@ -25,14 +25,17 @@ fun minimax(board: Board, depth: Int = 0, alpha: Int = Int.MIN_VALUE, beta: Int 
             NodeType.UPPER_BOUND -> beta = beta.coerceAtMost(transposition.score)
         }
 
-        if (alpha >= beta)
-            return transposition
+        if (alpha >= beta) {
+            val nodeType = determineNodeType(transposition.score, alpha, beta)
+            return Evaluation(transposition.score, nodeType, depth)
+        }
     }
 
     val boardScore = board.score
     if (boardScore != null) {
         val adjustedScore = boardScore * (100 - depth)
-        return Evaluation(adjustedScore, NodeType.EXACT, depth)
+        val nodeType = determineNodeType(adjustedScore, alpha, beta)
+        return Evaluation(adjustedScore, nodeType, depth)
     }
 
     val maximizing = board.turn == Marker.X
