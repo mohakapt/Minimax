@@ -2,7 +2,8 @@ package charizard
 
 /**
  * This is the first version of our engine, it's quite slow, but it should be unbeatable.
- * I call it Charizard because it's the third and final evolution of Charmander. It can be improved further, but it's a monster as is.
+ * I call it Charizard because it's the third and final evolution of Charmander.
+ * It can be improved further, but it's a monster as it is.
  * It uses the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax) to find the best move.
  */
 object Charizard {
