@@ -7,9 +7,12 @@ package charizard
  */
 object Charizard {
     private val randomMoves = mapOf(
-        3 to 0,
-        4 to 3,
-        5 to 8,
+        3 to 1,
+        4 to 4,
+        5 to 15,
+        6 to 23,
+        7 to 33,
+        8 to 45,
     )
 
     /**
@@ -24,7 +27,7 @@ object Charizard {
         val randomMovesCount = randomMoves[board.boardSize] ?: 0
 
         if (playedMovesCount < randomMovesCount)
-            return moves.random()
+            return BasicStrategy.suggestMove(board)
 
         val evaluation = minimax(board)
         return evaluation.move ?: throw IllegalStateException("No move was found, probably the board is full.")
