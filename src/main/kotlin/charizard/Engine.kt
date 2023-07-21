@@ -42,7 +42,7 @@ fun minimax(board: Board, depth: Int = 0, alpha: Int = Int.MIN_VALUE, beta: Int 
     var bestScore = if (maximizing) Int.MIN_VALUE else Int.MAX_VALUE
     var bestMove = -1
 
-    val moves = board.availableMoves.toMutableList()
+    val moves = board.availableMoves.shuffled().toMutableList()
     if (transposition?.move != null) {
         moves.remove(transposition.move)
         moves.add(0, transposition.move)
