@@ -1,6 +1,23 @@
 package charizard
 
+/**
+ * A basic strategy to follow when playing and the search tree is too large to explore by minimax.
+ * The strategy works as follows:
+ * 1. If there is a move that wins the game, make that move.
+ * 2. If there is a move that blocks the opponent from winning on the next turn, make that move.
+ * 3. If the center is available, take it.
+ * 4. If a corner is available, take it.
+ * 5. If the board has any remaining winning combinations, make a move that works towards completing the most completed one of them.
+ * 6. Otherwise, make a random move.
+ */
 object BasicStrategy {
+    /**
+     * Suggest a move for the given board based on the basic strategy.
+     * This method is not guaranteed to return the best move, but it's fast and should be better than random playing.
+     *
+     * @param board The board to evaluate.
+     * @return The index of the suggested move.
+     */
     fun suggestMove(board: Board): Int {
         val moves = board.availableMoves
 
