@@ -10,10 +10,10 @@ object Charizard {
     private val randomMoves = mapOf(
         3 to 1,
         4 to 4,
-        5 to 15,
+        5 to 14,
         6 to 23,
-        7 to 33,
-        8 to 45,
+        7 to 35,
+        8 to 48,
     )
 
     /**
