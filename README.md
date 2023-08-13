@@ -29,25 +29,6 @@ Welcome to this unique exploration of the Minimax algorithm, presented through t
 
 - **Scalability:** Our AI can play Tic-Tac-Toe on any board size.
 
----
-
-## Versions
-
-**1. Charmander: 🔥**
-- The starting point of our AI journey.
-- Uses a basic Minimax algorithm.
-- Can competently play on a 3x3 board and potentially handle a 4x4 board if given enough time.
-
-**2. Charmeleon: 🔥🔥**
-- An evolved form of our AI.
-- Incorporates the Alpha Beta Pruning and Bit Boards for efficiency.
-- Efficiently plays on a 4x4 board and can manage a 5x5 board with some patience.
-
-**3. Charizard: 🔥🔥🔥**
-- The ultimate version.
-- Combines all the techniques mentioned above for the best performance.
-- Capable of playing on boards up to 9x9 in size.
-
 ## Tech Stack
 
 - **Language:** Kotlin
