@@ -27,6 +27,7 @@ object TranspositionTable {
      * @see get
      */
     fun put(board: Board, evaluation: Evaluation) {
+        if (board.boardSize == 3) return
         table[board] = evaluation
     }
 
