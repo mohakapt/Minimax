@@ -1,4 +1,4 @@
 fun main(args: Array<String>) {
-    Match(Player.DOOZ, Player.CHARIZARD)
-        .playMatch(3, 200)
+    Match(Player.CHARIZARD, Player.BASIC_STRATEGY)
+        .playMatch(5, 200)
 }

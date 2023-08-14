@@ -11,13 +11,15 @@ import kotlin.system.measureNanoTime
 enum class Player {
     CHARIZARD,
     DOOZ,
-    NISHCHAL;
+    NISHCHAL,
+    BASIC_STRATEGY;
 
     val friendlyName: String
         get() = when (this) {
             CHARIZARD -> "Charizard"
             DOOZ -> "Dooz"
             NISHCHAL -> "Nishchal"
+            BASIC_STRATEGY -> "Basic Strategy"
         }
 }
 
@@ -118,6 +120,7 @@ class Match(
                 Player.CHARIZARD -> Charizard.suggestMove(board)
                 Player.DOOZ -> Dooz.suggestMove(board)
                 Player.NISHCHAL -> Nishchal.suggestMove(board)
+                Player.BASIC_STRATEGY -> BasicStrategy.suggestMove(board)
             }
             reval = board.makeMove(suggestedMove)
         }
