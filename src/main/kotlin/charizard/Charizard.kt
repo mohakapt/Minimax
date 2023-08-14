@@ -7,13 +7,14 @@ package charizard
  * It uses the [minimax algorithm](https://en.wikipedia.org/wiki/Minimax) to find the best move.
  */
 object Charizard {
-    private val randomMoves = mapOf(
+    private val basicStrategyMoves = mapOf(
         3 to 1,
         4 to 4,
         5 to 14,
         6 to 23,
         7 to 35,
         8 to 48,
+        9 to 66,
     )
 
     /**
@@ -24,10 +25,10 @@ object Charizard {
      */
     fun suggestMove(board: Board): Int {
         val moves = board.availableMoves
-        val playedMovesCount = board.cellCount - moves.size
-        val randomMovesCount = randomMoves[board.boardSize] ?: 0
+        val playedMoveCount = board.cellCount - moves.size
+        val basicStrategyMoveCount = basicStrategyMoves[board.boardSize] ?: 0
 
-        if (playedMovesCount < randomMovesCount)
+        if (playedMoveCount < basicStrategyMoveCount)
             return BasicStrategy.suggestMove(board)
 
         val evaluation = minimax(board)
