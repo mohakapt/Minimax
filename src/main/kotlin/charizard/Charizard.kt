@@ -14,7 +14,6 @@ object Charizard {
         6 to 23,
         7 to 35,
         8 to 48,
-        9 to 66,
     )
 
     /**
