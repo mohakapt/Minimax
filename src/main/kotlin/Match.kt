@@ -67,7 +67,7 @@ class Match(
     /**
      * Starts a match between the two players.
      *
-     * @param boardSize The size of the board, i.e. the number of rows and columns.
+     * @param boardSize The size of the board, i.e., the number of rows and columns.
      * @param gameCount The number of games to play.
      */
     fun playMatch(boardSize: Int, gameCount: Int) {

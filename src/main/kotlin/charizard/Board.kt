@@ -28,9 +28,12 @@ data class Board(
 
 /**
  * Creates an empty board of the given size.
+ * The minimum board size is 3.
+ * The maximum board size is 8 because the bitboard representation uses a `Long`, which is 64 bits.
  *
- * @param boardSize The size of the board, i.e. the number of rows and columns.
+ * @param boardSize The size of the board, i.e., the number of rows and columns.
  * @return A new empty board with the given size.
+ * @throws IllegalArgumentException If the board size is less than 3 or greater than 8.
  */
 fun Board.Companion.empty(boardSize: Int): Board {
     require(boardSize >= 3) { "Board size must be greater than or equal to 3." }
