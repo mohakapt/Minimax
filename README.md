@@ -1,7 +1,7 @@
 # Advanced Tic-Tac-Toe AI: A Journey from Charmander to Charizard 🐲
 
 <p align="center">
-  <img src="/cover.png" alt="Project Cover"/>
+  <img width="70%" src="/cover.png" alt="Project Cover"/>
 </p>
 
 Welcome to this unique exploration of the Minimax algorithm, presented through the lens of a Tic-Tac-Toe playing program. This project was crafted as a supplementary resource for an upcoming YouTube video on my channel, where we dive deep into the intricacies of game theory and AI algorithms, using the world of Pokémon as a fun metaphor.
