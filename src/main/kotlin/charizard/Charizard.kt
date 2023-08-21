@@ -16,6 +16,27 @@ object Charizard {
         8 to 48,
     )
 
+
+    /**
+     * Evaluates the given board and returns an [Evaluation] object, containing the best move and the score.
+     * The score is `1` if the game is a win for X, `-1` if the game is a win for O, and `0` if the game is a tie.
+     * The move is `null` if the game is over, otherwise it's the index of the best move.
+     *
+     * @param board The board to evaluate.
+     * @return The evaluation of the board.
+     * @see Evaluation
+     */
+    fun evaluate(board: Board): Evaluation {
+        val moves = board.availableMoves
+        val playedMoveCount = board.cellCount - moves.size
+        val basicStrategyMoveCount = basicStrategyMoves[board.boardSize] ?: 0
+
+        if (playedMoveCount < basicStrategyMoveCount)
+            return Evaluation(0, NodeType.EXACT, 0, BasicStrategy.suggestMove(board))
+
+        return minimax(board)
+    }
+
     /**
      * Evaluates the given board and suggests the best move accordingly.
      *
@@ -23,14 +44,6 @@ object Charizard {
      * @return The index of the suggested move.
      */
     fun suggestMove(board: Board): Int {
-        val moves = board.availableMoves
-        val playedMoveCount = board.cellCount - moves.size
-        val basicStrategyMoveCount = basicStrategyMoves[board.boardSize] ?: 0
-
-        if (playedMoveCount < basicStrategyMoveCount)
-            return BasicStrategy.suggestMove(board)
-
-        val evaluation = minimax(board)
-        return evaluation.move ?: throw IllegalStateException("No move was found, probably the board is full.")
+        return evaluate(board).move ?: throw IllegalStateException("No move was found, probably the board is full.")
     }
 }
